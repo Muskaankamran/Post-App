@@ -1,0 +1,95 @@
+/* ===== General Page Styling ===== */
+body {
+  background-color: #dcdee1;
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#signUpFormContainer {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+
+#signUpFormContainer:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== Logo and Title ===== */
+#signUpFormContainer h2 {
+  font-weight: 600;
+  color: #322d4d;
+  margin-bottom: 20px;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  vertical-align: middle;
+  border-radius: 50%;
+}
+
+/* ===== Labels and Inputs ===== */
+label {
+  font-weight: 500;
+  color: #444;
+}
+
+input.form-control {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+input.form-control:focus {
+  border-color: #485e76;
+  box-shadow: 0 0 4px rgba(147, 197, 249, 0.5);
+}
+
+.form-check-label {
+  color: #555;
+}
+
+.bg-color {
+  background-color: #3b536c; 
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.bg-color:hover {
+  background-color: #546577;
+  transform: scale(1.05);
+}
+
+.text-white {
+  color: #fff !important;
+}
+
+@media (max-width: 768px) {
+  #signUpFormContainer {
+    width: 90% !important;
+    padding: 20px;
+  }
+  .logo {
+    width: 40px;
+    height: 40px;
+  }
+}
+.hidden { display: none; }
+
+    .image {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+
+    .post-card { margin-bottom: 15px; }
