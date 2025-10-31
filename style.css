@@ -1,95 +1,85 @@
-/* ===== General Page Styling ===== */
 body {
-  background-color: #dcdee1;
+  background-color: #ffffff;
   font-family: "Poppins", sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
 }
+.navbar {
+  background-color: #0e424c !important;
+  color: white;
+}
+
+.navbar-brand {
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+}
+.signupform{
+  margin: 0 auto;
+}
+
+.navbar-brand:hover {
+  color: white;
+}
+
 
 #signUpFormContainer {
-  background-color: #ffffff;
+  background: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-}
-
-
-#signUpFormContainer:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
-}
-
-/* ===== Logo and Title ===== */
-#signUpFormContainer h2 {
-  font-weight: 600;
-  color: #322d4d;
-  margin-bottom: 20px;
 }
 
 .logo {
-  width: 50px;
-  height: 50px;
-  margin-right: 10px;
-  vertical-align: middle;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
 }
 
-/* ===== Labels and Inputs ===== */
-label {
-  font-weight: 500;
-  color: #444;
+.btn-post {
+  background-color: #0a5f86;
+  color: white;
 }
 
-input.form-control {
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  transition: border 0.2s ease, box-shadow 0.2s ease;
+.btn-post:hover {
+  background-color: #0e758f;
 }
 
-input.form-control:focus {
-  border-color: #485e76;
-  box-shadow: 0 0 4px rgba(147, 197, 249, 0.5);
+.card {
+  border: 1px solid #ddd;
 }
 
-.form-check-label {
-  color: #555;
+.post-card {
+  background-color: #f9f9f9;
 }
 
-.bg-color {
-  background-color: #3b536c; 
-  border: none;
-  transition: all 0.3s ease;
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
 }
 
-.bg-color:hover {
-  background-color: #546577;
-  transform: scale(1.05);
+.btn-edit {
+  background-color: #2b5f91;
+  color: white;
 }
 
-.text-white {
-  color: #fff !important;
+.btn-edit:hover {
+  background-color: #146c8f;
+}
+
+.btn-delete {
+  background-color: #9e3522;
+  color: white;
+}
+
+.btn-delete:hover {
+  background-color: #ad3945;
+}
+
+.hidden {
+  display: none;
 }
 
 @media (max-width: 768px) {
-  #signUpFormContainer {
-    width: 90% !important;
-    padding: 20px;
-  }
-  .logo {
-    width: 40px;
-    height: 40px;
+  .navbar-brand span {
+    font-size: 1rem;
   }
 }
-.hidden { display: none; }
-
-    .image {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      margin-right: 10px;
-      vertical-align: middle;
-    }
-
-    .post-card { margin-bottom: 15px; }

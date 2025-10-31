@@ -12,71 +12,91 @@
 </head>
 
 <body>
-    <div id="signUpFormContainer" class="card p-4 mx-auto mt-5" style="width: 30rem">
+    <!-- ===== Sign Up Section ===== -->
+  <div id="signUpFormContainer" class="card p-4 mx-auto mt-5 signupform" style="width: 30rem;">
     <h2 class="text-center mb-4">
-        <img class="logo" src="https://umra-badar20.github.io/Post-App/Images/logo1.png" alt="">
-        Sign Up Form
+      <img class="logo" src="https://umra-badar20.github.io/Post-App/Images/logo1.png" alt="logo" width="50" />
+      Sign Up Form
     </h2>
+
     <form id="signUpForm">
-        <div class="row g-3">
-            <div class="col-md-6">
-                <label class="form-label">First name</label>
-                <input required type="text" class="form-control" id="inputFirstName" />
-            </div>
-            <div class="col-md-6">
-                <label class="form-label">Last name</label>
-                <input required type="text" class="form-control" id="inputLastName" />
-            </div>
-            <div class="col-md-6">
-                <label class="form-label">Email</label>
-                <input required type="email" class="form-control" id="inputEmail4" />
-            </div>
-            <div class="col-md-6">
-                <label class="form-label">Password</label>
-                <input required type="password" class="form-control" id="inputPassword4" />
-            </div>
-            <div class="col-12">
-                <label class="form-label">Phone</label>
-                <input required type="number" class="form-control" id="inputPhone" placeholder="####-######" />
-            </div>
-            <div class="col-md-6">
-                <label class="form-label">Country</label>
-                <input required type="text" class="form-control" id="inputCountry" />
-            </div>
-            <div class="col-12">
-                <button type="submit" class="btn btn-primary w-100">Sign In</button>
-            </div>
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label">First name</label>
+          <input required type="text" class="form-control" id="inputFirstName" />
         </div>
+        <div class="col-md-6">
+          <label class="form-label">Last name</label>
+          <input required type="text" class="form-control" id="inputLastName" />
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Email</label>
+          <input required type="email" class="form-control" id="inputEmail4" />
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Password</label>
+          <input required type="password" class="form-control" id="inputPassword4" />
+        </div>
+        <div class="col-12">
+          <label class="form-label">Phone</label>
+          <input required type="number" class="form-control" id="inputPhone" />
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Country</label>
+          <input required type="text" class="form-control" id="inputCountry" />
+        </div>
+        <div class="col-12">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="gridCheck" required />
+            <label class="form-check-label" for="gridCheck">Check me out</label>
+          </div>
+        </div>
+        <div class="col-12">
+          <button type="submit" onclick="signIn()" class="btn btn-primary w-100">Sign In</button>
+        </div>
+      </div>
     </form>
-</div>
+  </div>
 
-<!-- ===== Post App Container ===== -->
-<div id="postAppContainer" class="hidden mx-auto mt-5" style="width: 30rem;">
-    <h2 class="text-center mb-4">
-        <img class="logo" src="https://umra-badar20.github.io/Post-App/Images/logo1.png" alt="">
-        Post App
-    </h2>
+  <div id="postApp" class="hidden">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a class="navbar-brand d-flex align-items-center" href="#">
+          <img src="https://umra-badar20.github.io/Post-App/Images/logo1.png" class="logo me-2" alt="logo">
+          <span>Post App</span>
+        </a>
+       
+      </div>
+    </nav>
 
-    <!-- Post Form -->
-    <div class="card p-4 mb-4">
-        <form id="postForm">
-            <div class="mb-3">
-                <label class="form-label">Title</label>
-                <input type="text" class="form-control" id="postTitle" placeholder="Enter post title" required>
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Message</label>
-                <textarea class="form-control" id="postMessage" rows="3" placeholder="Enter your message" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary w-100">Add Post</button>
-        </form>
+    <div class="container-fluid mt-4">
+      <div class="row">
+        <!-- Post Form -->
+        <div class="col-lg-4 col-md-5 mb-4">
+          <div class="card p-3">
+            <form id="postForm">
+              <div class="mb-3">
+                <label for="postTitle" class="form-label">Title:</label>
+                <input type="text" class="form-control" id="postTitle" />
+              </div>
+              <div class="mb-3">
+                <label for="postMessage" class="form-label">Description:</label>
+                <textarea class="form-control" id="postMessage" rows="4"></textarea>
+              </div>
+              <button type="submit" class="btn btn-post">Post</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Posts Display -->
+        <div class="col-lg-8 col-md-7">
+          <div id="postsContainer"></div>
+        </div>
+      </div>
     </div>
+  </div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <!-- Posts Display -->
-    <div id="postsContainer"></div>
-</div>
-
-    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>

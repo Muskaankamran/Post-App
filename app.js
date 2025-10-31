@@ -1,74 +1,93 @@
-var signUpForm = document.getElementById('signUpForm');
-var signUpContainer = document.getElementById('signUpFormContainer');
-var postAppContainer = document.getElementById('postAppContainer');
+const signUpForm = document.getElementById('signUpForm');
+const signUpContainer = document.getElementById('signUpFormContainer');
+const postAppContainer = document.getElementById('postApp');
+const postForm = document.getElementById('postForm');
+const postsContainer = document.getElementById('postsContainer');
 
-signUpForm.onsubmit = function(e) {
-    e.preventDefault();
-    signUpContainer.classList.add('hidden');
-    postAppContainer.classList.remove('hidden');
+let userName = '';
+let editingPostDiv = null;
+
+// === Handle Sign Up ===
+signUpForm.onsubmit = function (e) {
+  e.preventDefault();
+
+  const firstName = document.getElementById('inputFirstName').value.trim();
+  const lastName = document.getElementById('inputLastName').value.trim();
+
+  userName = `${firstName} ${lastName}`;
+  signUpContainer.classList.add('hidden');
+  postAppContainer.classList.remove('hidden');
 };
 
 
-
-
-var postForm = document.getElementById('postForm');
-var postsContainer = document.getElementById('postsContainer');
-
-var editingPostDiv = null;
-
-function createPost(title, message) {
-    var postDiv = document.createElement('div');
-    postDiv.className = 'card p-3 mb-3 post-card';
-    postDiv.innerHTML = `
-        <h5>${title}</h5>
-        <p>${message}</p>
-        <div class="row mt-3">
-            <div class="col-6">
-                <button class="btn btn-warning w-100 edit-btn">Edit</button>
-            </div>
-            <div class="col-6">
-                <button class="btn btn-danger w-100 delete-btn">Delete</button>
-            </div>
-        </div>
-    `;
-    postDiv.querySelector('.edit-btn').onclick = function() {
-        document.getElementById('postTitle').value = postDiv.querySelector('h5').innerText;
-        document.getElementById('postMessage').value = postDiv.querySelector('p').innerText;
-        editingPostDiv = postDiv;
-        postForm.querySelector('button[type="submit"]').innerText = 'Update Post';
-    };
-    postDiv.querySelector('.delete-btn').onclick = function() {
-        if(editingPostDiv === postDiv) {
-        
-            editingPostDiv = null;
-            postForm.reset();
-            postForm.querySelector('button[type="submit"]').innerText = 'Add Post';
-        }
-        postsContainer.removeChild(postDiv);
-    };
-
-    postsContainer.insertBefore(postDiv, postsContainer.firstChild);
+function signIn(){
+  Swal.fire({
+  position: "top-end",
+  icon: "success",
+  title: "Account Created Successfully",
+  showConfirmButton: false,
+  timer: 1500
+});
 }
 
-postForm.onsubmit = function(e) {
-    e.preventDefault();
-    var title = document.getElementById('postTitle').value.trim();
-    var message = document.getElementById('postMessage').value.trim();
+// === Create a Post ===
+function createPost(title, message) {
+  const postDiv = document.createElement('div');
+  postDiv.className = 'card mb-3 p-3 shadow-sm post-card';
 
-    if (!title || !message) {
-        alert('Please fill both Title and Message');
-        return;
-    }
+  const currentTime = new Date().toLocaleTimeString();
 
-    if (editingPostDiv) {
-        editingPostDiv.querySelector('h5').innerText = title;
-        editingPostDiv.querySelector('p').innerText = message;
+  postDiv.innerHTML = `
+    <div class="d-flex align-items-center mb-2">
+      <div>
+        <strong>${userName}</strong><br>
+        <small class="text-muted">${currentTime}</small>
+      </div>
+    </div>
+    <h6>${title}</h6>
+    <p>${message}</p>
+    <div class="text-end">
+      <button class="btn btn-sm btn-edit me-2">Edit</button>
+      <button class="btn btn-sm btn-delete">Delete</button>
+    </div>
+  `;
 
-        editingPostDiv = null;
-        postForm.querySelector('button[type="submit"]').innerText = 'Add Post';
-    } else {
-        createPost(title, message);
-    }
+  // Edit
+  postDiv.querySelector('.btn-edit').onclick = function () {
+    document.getElementById('postTitle').value = title;
+    document.getElementById('postMessage').value = message;
+    editingPostDiv = postDiv;
+    postForm.querySelector('button').innerText = 'Update';
+  };
 
-    postForm.reset();
+  // Delete
+  postDiv.querySelector('.btn-delete').onclick = function () {
+    postsContainer.removeChild(postDiv);
+  };
+
+  postsContainer.insertBefore(postDiv, postsContainer.firstChild);
+}
+
+// === Handle Post Form ===
+postForm.onsubmit = function (e) {
+  e.preventDefault();
+
+  const title = document.getElementById('postTitle').value.trim();
+  const message = document.getElementById('postMessage').value.trim();
+
+  if (!title || !message) {
+    alert('Please fill in both fields.');
+    return;
+  }
+
+  if (editingPostDiv) {
+    editingPostDiv.querySelector('h6').innerText = title;
+    editingPostDiv.querySelector('p').innerText = message;
+    editingPostDiv = null;
+    postForm.querySelector('button').innerText = 'Post';
+  } else {
+    createPost(title, message);
+  }
+
+  postForm.reset();
 };
