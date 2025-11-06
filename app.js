@@ -1,3 +1,5 @@
+
+var cardBg;
 const signUpForm = document.getElementById('signUpForm');
 const signUpContainer = document.getElementById('signUpFormContainer');
 const postAppContainer = document.getElementById('postApp');
@@ -20,24 +22,53 @@ signUpForm.onsubmit = function (e) {
 };
 
 
-function signIn(){
-  Swal.fire({
+
+
+function signIn() {
+ Swal.fire({
   position: "top-end",
   icon: "success",
-  title: "Account Created Successfully",
+  title: "Your account has been created!",
   showConfirmButton: false,
-  timer: 1500
+  timer: 1500,
+  background: "#d47b9fff", 
+  color: "#333"          
 });
-}
 
-// === Create a Post ===
+}
+  function selectImg(src){
+   cardBg = src;
+   //console.log(cardBg);
+   var bgImg = document.getElementsByClassName("bgImg");
+   for(var i = 0; i<bgImg.length;i++){
+    bgImg[i].className = "bgImg"
+   }
+   event.target.classList.add("selectedImg")
+  }
+
 function createPost(title, message) {
   const postDiv = document.createElement('div');
   postDiv.className = 'card mb-3 p-3 shadow-sm post-card';
 
   const currentTime = new Date().toLocaleTimeString();
 
+  // postDiv.innerHTML = `
+  //   <div class="d-flex align-items-center mb-2">
+  //     <div>
+  //       <strong>${userName}</strong><br>
+  //       <small class="text-muted">${currentTime}</small>
+  //     </div>
+  //   </div>
+  //   <h6>${title}</h6>
+  //   <p>${message}</p>
+  //   <div class="text-end">
+  //     <button class="btn btn-sm btn-edit me-2">Edit</button>
+  //     <button class="btn btn-sm btn-delete">Delete</button>
+  //   </div>
+  // `;
+
   postDiv.innerHTML = `
+  <div class="card-body" style="background-image: url('${cardBg}'); background-size: cover; background-position: center;">
     <div class="d-flex align-items-center mb-2">
       <div>
         <strong>${userName}</strong><br>
@@ -50,7 +81,8 @@ function createPost(title, message) {
       <button class="btn btn-sm btn-edit me-2">Edit</button>
       <button class="btn btn-sm btn-delete">Delete</button>
     </div>
-  `;
+  </div>
+`;
 
   // Edit
   postDiv.querySelector('.btn-edit').onclick = function () {
@@ -76,9 +108,16 @@ postForm.onsubmit = function (e) {
   const message = document.getElementById('postMessage').value.trim();
 
   if (!title || !message) {
-    alert('Please fill in both fields.');
-    return;
-  }
+  Swal.fire({
+    title: "Enter fields",
+    background: "#ff7cf8ff", 
+    color: "#000",     
+    confirmButtonText: "OK",
+  customClass: {
+    confirmButton: 'my-confirm-btn', 
+  }});
+  return;
+}
 
   if (editingPostDiv) {
     editingPostDiv.querySelector('h6').innerText = title;
@@ -88,6 +127,5 @@ postForm.onsubmit = function (e) {
   } else {
     createPost(title, message);
   }
-
   postForm.reset();
 };

@@ -1,9 +1,11 @@
 body {
-  background-color: #ffffff;
+  background:url(./Images/185c8db9854a1e9c13a4ec647456cfff.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
   font-family: "Poppins", sans-serif;
 }
 .navbar {
-  background-color: #0e424c !important;
+  background-color:#ff1fb4!important;
   color: white;
 }
 
@@ -12,42 +14,46 @@ body {
   font-weight: 600;
   text-decoration: none;
 }
-.signupform{
-  margin: 0 auto;
+.signin-btn{
+  background-color: #d38bb4;
 }
-
+.signin-btn:hover{
+  background-color: #d38bb4;
+}
 .navbar-brand:hover {
   color: white;
 }
 
 
 #signUpFormContainer {
-  background: #fff;
+  background-color: #FFBBE1;
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
 }
 
 .logo {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+  width: 50px;
+  height: 48px;
+  border-radius:50%;
 }
 
 .btn-post {
-  background-color: #0a5f86;
-  color: white;
+  background-color:#ff9595;
+  color: whitesmoke;
 }
 
 .btn-post:hover {
-  background-color: #0e758f;
+  background-color:#ff9595;
 }
 
 .card {
-  border: 1px solid #ddd;
+  border: 1px solid #c932a8;
 }
 
+
 .post-card {
-  background-color: #f9f9f9;
+  background-color: #fff;
 }
 
 .avatar {
@@ -77,9 +83,66 @@ body {
 .hidden {
   display: none;
 }
-
+.my-confirm-btn {
+  background-color: rgb(180, 50, 180) !important;
+  color: rgb(0, 0, 0) !important;            
+  border: none !important;
+  border-radius: 6px;
+  padding: 8px 20px;
+}
+.bgImg{
+    width: 50px;
+    height: 50px;
+}
+.bgImg:hover{
+    transform: scale(1.1);
+    transition: 0.3s;
+}
+.selectedImg{
+    border: 2px solid #c253aa;
+    border-radius: 5px;
+}
+.card-body{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
 @media (max-width: 768px) {
   .navbar-brand span {
     font-size: 1rem;
   }
 }
+ @media (max-width: 576px) {
+    .card-body {
+      min-height: 150px;
+      padding: 10px;
+      font-size: 14px;
+      background-position: top;
+    }
+
+    .card-body h6 {
+      font-size: 16px;
+    }
+
+    .card-body p {
+      font-size: 13px;
+    }
+  }
+
+  /* Medium screens (tablets) */
+  @media (min-width: 577px) and (max-width: 991px) {
+    .card-body {
+      min-height: 180px;
+      padding: 15px;
+      font-size: 15px;
+    }
+  }
+
+  /* Large screens (desktops) */
+  @media (min-width: 992px) {
+    .card-body {
+      min-height: 220px;
+      padding: 25px;
+      font-size: 16px;
+    }
+  }
